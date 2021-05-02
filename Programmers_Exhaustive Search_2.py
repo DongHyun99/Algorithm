@@ -24,5 +24,3 @@ def solution(numbers):
         if arg == True:
             count +=1
     return count
-
-print(solution('011'))
