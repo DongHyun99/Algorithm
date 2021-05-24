@@ -1,19 +1,41 @@
+'''
+oxo oxx xxo xox
+xox xxo oxx oxo
+'''
 test_case = int(input())
+
+def case_0 (location:int, index1:list, index2:list):
+    return index2[location+1]+index1[location+2]
+
+def case_1 (location:int, index1:list, index2:list):
+    return index2[location+2]
+
+def case_2 (location:int, index1:list, index2:list):
+    return index1[location+2]
+
+def case_3 (location:int, index1:list, index2:list):
+    return index1[location+1]+index2[location+2]
 
 for i in range(0,test_case,1):
     length = int(input())
     index1 = input().split(' ')
     index2 = input().split(' ')
-    index = [index1, index2]
-    index_sec = index1+index2
-
-def max_sticker(index:list, index_sex:list, length:int):
-    index_sort = sorted(index_sec).reverse()
-    while(True):
-        location = index_sec.index(max(index_sort)) # 나중에 index_sort와 index_sec의 값을 초기화 해줘야 함
-        if location//length == 1: # 2행일 때 위치를 맞춰준다.
-            location = location % length
-        if location == 0: # 가장 왼쪽인 경우 왼쪽은 고려하지 않아도 됨
-            val1=index[0][0]-index[0][1]-index[1][0]
-            val2=index[1][0]-index[1][1]-index[0][0]
-            if val1 
+    index1 = map(index2,int)
+    index2 = map(index2,int)
+    val=[index1[0],index2[0]]
+    for j in range(0,(length-1)//2,2):
+        zero = val[0]+case_0(j, index1, index2)
+        one = val[0]+case_1(j, index1, index2)
+        two = val[1]+case_2(j, index1, index2)
+        three = val[1]+case_3(j, index1, index2)
+        if zero>two:
+            val[0] = zero
+        else: val[0] = two
+        if one>three:
+            val[1] = one
+        else: val[1] = three
+        print(val)
+    if(length-1)%2 == 1:
+        val[0] += index2[length-1]
+        val[1] += index1[length-1]
+    print(max(val))
