@@ -4,6 +4,7 @@
 ## Algorithm_Day
 
 - 04/29 완전탐색 (Programmers) - 3문제
+- 09/10 20300 - 서강근육맨 (그리디)
 
 ## Daily
 
